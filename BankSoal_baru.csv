@@ -1,0 +1,76 @@
+SectionID	NomorSoal	VersiID	TeksSoal	A	B	C	D	JawabanBenar	Poin	Status	TeksSoalLatex	URLGambarCache
+S1	1	V1	Tentukan nilai x dari persamaan berikut!	7	8	6	9	A	1	Aktif	3x - 7 = 14, \quad x = \ldots	
+S1	1	V2	Tentukan nilai x dari persamaan berikut!	6	7	5	8	A	1	Aktif	4x + 5 = 29, \quad x = \ldots	
+S1	1	V3	Tentukan nilai x dari persamaan berikut!	6	7	8	5	A	1	Aktif	5x - 12 = 18, \quad x = \ldots	
+S1	1	V4	Tentukan nilai x dari persamaan berikut!	8	7	9	6	A	1	Aktif	2x + 9 = 25, \quad x = \ldots	
+S1	1	V5	Tentukan nilai x dari persamaan berikut!	6	5	7	8	A	1	Aktif	6x - 3 = 33, \quad x = \ldots	
+S1	2	V1	Diketahui fungsi di bawah ini. Hitunglah nilainya!	10	8	12	14	A	1	Aktif	f(x) = 2x^2 - 3x + 1, \quad f(3) = \ldots	
+S1	2	V2	Diketahui fungsi di bawah ini. Hitunglah nilainya!	11	13	9	15	A	1	Aktif	f(x) = 3x^2 + 2x - 5, \quad f(2) = \ldots	
+S1	2	V3	Diketahui fungsi di bawah ini. Hitunglah nilainya!	7	9	5	11	A	1	Aktif	f(x) = x^2 - 4x + 7, \quad f(4) = \ldots	
+S1	2	V4	Diketahui fungsi di bawah ini. Hitunglah nilainya!	6	8	4	10	A	1	Aktif	f(x) = x^2 + 3x - 4, \quad f(2) = \ldots	
+S1	2	V5	Diketahui fungsi di bawah ini. Hitunglah nilainya!	18	20	16	22	A	1	Aktif	f(x) = 2x^2 - x + 3, \quad f(3) = \ldots	
+S1	3	V1	Tentukan hasil pemfaktoran dari ekspresi berikut!	(x-4)(x-5)	(x-2)(x-10)	(x+4)(x+5)	(x-1)(x-20)	A	1	Aktif	x^2 - 9x + 20 = \ldots	
+S1	3	V2	Tentukan hasil pemfaktoran dari ekspresi berikut!	(x-3)(x-4)	(x-2)(x-6)	(x+3)(x+4)	(x-1)(x-12)	A	1	Aktif	x^2 - 7x + 12 = \ldots	
+S1	3	V3	Tentukan hasil pemfaktoran dari ekspresi berikut!	(x-3)(x-8)	(x-4)(x-6)	(x+3)(x+8)	(x-2)(x-12)	A	1	Aktif	x^2 - 11x + 24 = \ldots	
+S1	3	V4	Tentukan hasil pemfaktoran dari ekspresi berikut!	(x-3)(x-5)	(x-2)(x-15)	(x+3)(x+5)	(x-1)(x-15)	A	1	Aktif	x^2 - 8x + 15 = \ldots	
+S1	3	V5	Tentukan hasil pemfaktoran dari ekspresi berikut!	(x-3)(x-7)	(x-2)(x-14)	(x+3)(x+7)	(x-1)(x-21)	A	1	Aktif	x^2 - 10x + 21 = \ldots	
+S1	4	V1	Tentukan himpunan penyelesaian dari pertidaksamaan berikut!	x < 2	x > 2	x \leq 2	x < 3	A	1	Aktif	3x - 6 < 0	
+S1	4	V2	Tentukan himpunan penyelesaian dari pertidaksamaan berikut!	x \leq 3	x \geq 3	x < 3	x > 3	A	1	Aktif	2x + 4 \leq 10	
+S1	4	V3	Tentukan himpunan penyelesaian dari pertidaksamaan berikut!	x > 2	x < 2	x \geq 2	x \leq 2	A	1	Aktif	4x - 8 > 0	
+S1	4	V4	Tentukan himpunan penyelesaian dari pertidaksamaan berikut!	x \geq 4	x \leq 4	x > 4	x < 4	A	1	Aktif	5x + 10 \geq 30	
+S1	4	V5	Tentukan himpunan penyelesaian dari pertidaksamaan berikut!	x < 5	x > 5	x \leq 5	x \geq 5	A	1	Aktif	6x - 12 < 18	
+S1	5	V1	Hitunglah nilai dari ekspresi perpangkatan berikut!	32	16	64	8	A	1	Aktif	2^3 \times 2^2 = \ldots	
+S1	5	V2	Hitunglah nilai dari ekspresi perpangkatan berikut!	9	27	3	81	A	1	Aktif	\dfrac{3^4}{3^2} = \ldots	
+S1	5	V3	Hitunglah nilai dari ekspresi perpangkatan berikut!	64	32	128	16	A	1	Aktif	\left(2^3\right)^2 = \ldots	
+S1	5	V4	Hitunglah nilai dari ekspresi perpangkatan berikut!	3125	625	15625	125	A	1	Aktif	5^2 \times 5^3 = \ldots	
+S1	5	V5	Hitunglah nilai dari ekspresi perpangkatan berikut!	16	64	4	256	A	1	Aktif	\dfrac{4^4}{4^2} = \ldots	
+S2	1	V1	Hitunglah panjang sisi miring segitiga siku-siku berikut!	10 cm	12 cm	14 cm	9 cm	A	1	Aktif	c = \sqrt{6^2 + 8^2} = \ldots	
+S2	1	V2	Hitunglah panjang sisi miring segitiga siku-siku berikut!	13 cm	15 cm	14 cm	11 cm	A	1	Aktif	c = \sqrt{5^2 + 12^2} = \ldots	
+S2	1	V3	Hitunglah panjang sisi miring segitiga siku-siku berikut!	15 cm	18 cm	16 cm	14 cm	A	1	Aktif	c = \sqrt{9^2 + 12^2} = \ldots	
+S2	1	V4	Hitunglah panjang sisi miring segitiga siku-siku berikut!	17 cm	19 cm	16 cm	20 cm	A	1	Aktif	c = \sqrt{8^2 + 15^2} = \ldots	
+S2	1	V5	Hitunglah panjang sisi miring segitiga siku-siku berikut!	25 cm	23 cm	26 cm	22 cm	A	1	Aktif	c = \sqrt{7^2 + 24^2} = \ldots	
+S2	2	V1	Hitunglah luas bangun datar berikut! (segitiga: alas=10 cm, tinggi=8 cm)	40 cm^2	80 cm^2	20 cm^2	60 cm^2	A	1	Aktif	L_{\triangle} = \tfrac{1}{2} \times 10 \times 8 = \ldots	
+S2	2	V2	Hitunglah luas bangun datar berikut! (persegi panjang: 12 cm x 7 cm)	84 cm^2	168 cm^2	42 cm^2	96 cm^2	A	1	Aktif	L = 12 \times 7 = \ldots	
+S2	2	V3	Hitunglah luas bangun datar berikut! (lingkaran: r=7 cm, gunakan pi=22/7)	154 cm^2	44 cm^2	176 cm^2	49 cm^2	A	1	Aktif	L = \pi r^2 = \tfrac{22}{7} \times 7^2 = \ldots	
+S2	2	V4	Hitunglah luas bangun datar berikut! (trapesium: sisi sejajar 6 cm dan 10 cm, tinggi 4 cm)	32 cm^2	64 cm^2	16 cm^2	40 cm^2	A	1	Aktif	L = \tfrac{1}{2}(6 + 10) \times 4 = \ldots	
+S2	2	V5	Hitunglah luas bangun datar berikut! (jajargenjang: alas=15 cm, tinggi=6 cm)	90 cm^2	45 cm^2	180 cm^2	60 cm^2	A	1	Aktif	L = 15 \times 6 = \ldots	
+S2	3	V1	Hitunglah nilai dari ekspresi trigonometri berikut!	1	0,5	1,5	0	A	1	Aktif	\sin 30^\circ + \cos 60^\circ = \ldots	
+S2	3	V2	Hitunglah nilai dari ekspresi trigonometri berikut!	0	1	-1	2	A	1	Aktif	\sin 90^\circ - \cos 0^\circ = \ldots	
+S2	3	V3	Hitunglah nilai dari ekspresi trigonometri berikut!	0,5	1	1,5	0,25	A	1	Aktif	\tan 45^\circ \times \cos 60^\circ = \ldots	
+S2	3	V4	Hitunglah nilai dari ekspresi trigonometri berikut!	2	0	1	1,5	A	1	Aktif	\cos 0^\circ + \sin 90^\circ = \ldots	
+S2	3	V5	Hitunglah nilai dari ekspresi trigonometri berikut!	1	\sqrt{2}	0,5	2	A	1	Aktif	\sin 45^\circ \times \sqrt{2} = \ldots	
+S2	4	V1	Hitunglah volume bangun ruang berikut! (kubus: rusuk = 6 cm)	216 cm^3	196 cm^3	256 cm^3	180 cm^3	A	1	Aktif	V = s^3 = 6^3 = \ldots	
+S2	4	V2	Hitunglah volume bangun ruang berikut! (balok: 5 cm x 4 cm x 3 cm)	60 cm^3	120 cm^3	30 cm^3	80 cm^3	A	1	Aktif	V = 5 \times 4 \times 3 = \ldots	
+S2	4	V3	Hitunglah volume bangun ruang berikut! (tabung: r=7 cm, t=10 cm, pi=22/7)	1540 cm^3	770 cm^3	440 cm^3	2200 cm^3	A	1	Aktif	V = \pi r^2 h = \tfrac{22}{7} \times 49 \times 10 = \ldots	
+S2	4	V4	Hitunglah volume bangun ruang berikut! (prisma segitiga: alas 6 cm, tinggi alas 4 cm, tinggi 10 cm)	120 cm^3	240 cm^3	60 cm^3	180 cm^3	A	1	Aktif	V = \tfrac{1}{2} \times 6 \times 4 \times 10 = \ldots	
+S2	4	V5	Hitunglah volume bangun ruang berikut! (kubus: rusuk = 4 cm)	64 cm^3	48 cm^3	128 cm^3	16 cm^3	A	1	Aktif	V = s^3 = 4^3 = \ldots	
+S2	5	V1	Hitunglah keliling bangun datar berikut! (persegi panjang: p=8 cm, l=5 cm)	26 cm	40 cm	13 cm	52 cm	A	1	Aktif	K = 2(p + l) = 2(8 + 5) = \ldots	
+S2	5	V2	Hitunglah keliling bangun datar berikut! (lingkaran: r=7 cm, pi=22/7)	44 cm	22 cm	88 cm	154 cm	A	1	Aktif	K = 2\pi r = 2 \times \tfrac{22}{7} \times 7 = \ldots	
+S2	5	V3	Hitunglah keliling bangun datar berikut! (segitiga dengan sisi 3 cm, 4 cm, 5 cm)	12 cm	7 cm	20 cm	15 cm	A	1	Aktif	K = 3 + 4 + 5 = \ldots	
+S2	5	V4	Hitunglah keliling bangun datar berikut! (persegi: sisi = 9 cm)	36 cm	81 cm	18 cm	72 cm	A	1	Aktif	K = 4s = 4 \times 9 = \ldots	
+S2	5	V5	Hitunglah keliling bangun datar berikut! (trapesium dengan sisi 6, 8, 5, dan 9 cm)	28 cm	30 cm	24 cm	32 cm	A	1	Aktif	K = 6 + 8 + 5 + 9 = \ldots	
+S3	1	V1	Hitunglah rata-rata dari data berikut!	8	7,5	8,5	9	A	1	Aktif	\bar{x} = \dfrac{6 + 8 + 7 + 9 + 10}{5} = \ldots	
+S3	1	V2	Hitunglah rata-rata dari data berikut!	8	7,5	8,5	7	A	1	Aktif	\bar{x} = \dfrac{5 + 7 + 8 + 8 + 12}{5} = \ldots	
+S3	1	V3	Hitunglah rata-rata dari data berikut!	8	7	9	10	A	1	Aktif	\bar{x} = \dfrac{4 + 6 + 8 + 10 + 12}{5} = \ldots	
+S3	1	V4	Hitunglah rata-rata dari data berikut!	7	6	8	9	A	1	Aktif	\bar{x} = \dfrac{3 + 5 + 7 + 9 + 11}{5} = \ldots	
+S3	1	V5	Hitunglah rata-rata dari data berikut!	6	5	7	8	A	1	Aktif	\bar{x} = \dfrac{2 + 4 + 6 + 8 + 10}{5} = \ldots	
+S3	2	V1	Tentukan modus dari data berikut!	7	5	6	8	A	1	Aktif	\text{Data: } \{ 3,\; 5,\; 5,\; 6,\; 7,\; 7,\; 7,\; 8 \}	
+S3	2	V2	Tentukan modus dari data berikut!	4	8	6	2	A	1	Aktif	\text{Data: } \{ 2,\; 4,\; 4,\; 4,\; 6,\; 8,\; 8,\; 9 \}	
+S3	2	V3	Tentukan modus dari data berikut!	4	3	2	5	A	1	Aktif	\text{Data: } \{ 1,\; 2,\; 3,\; 3,\; 4,\; 4,\; 4,\; 5 \}	
+S3	2	V4	Tentukan modus dari data berikut!	15	12	10	18	A	1	Aktif	\text{Data: } \{ 10,\; 12,\; 12,\; 15,\; 15,\; 15,\; 18 \}	
+S3	2	V5	Tentukan modus dari data berikut!	9	5	7	11	A	1	Aktif	\text{Data: } \{ 5,\; 5,\; 7,\; 9,\; 9,\; 9,\; 11 \}	
+S3	3	V1	Tentukan median dari data berikut!	7	6	8	9	A	1	Aktif	\text{Data: } \{ 4,\; 6,\; \mathbf{7},\; 9,\; 9 \}	
+S3	3	V2	Tentukan median dari data berikut!	3	3,5	4	2,5	A	1	Aktif	\text{Data: } \{ 1,\; 2,\; \mathbf{3},\; 3,\; 4,\; 5,\; 6 \}	
+S3	3	V3	Tentukan median dari data berikut!	5,5	5	6	4,5	A	1	Aktif	\text{Data: } \{ 2,\; 4,\; 5,\; 6,\; 8,\; 9 \} \quad \text{Median}=\dfrac{5+6}{2}	
+S3	3	V4	Tentukan median dari data berikut!	10	9	11	9,5	A	1	Aktif	\text{Data: } \{ 7,\; 9,\; \mathbf{10},\; 11,\; 13 \}	
+S3	3	V5	Tentukan median dari data berikut!	6	5	7	5,5	A	1	Aktif	\text{Data: } \{ 1,\; 3,\; 5,\; 7,\; 9,\; 11 \} \quad \text{Median}=\dfrac{5+7}{2}	
+S3	4	V1	Hitunglah peluang kejadian berikut saat melempar satu dadu!	1/2	1/3	2/3	1/6	A	1	Aktif	P(\text{prima}) = \dfrac{n(\text{prima})}{n(S)} = \dfrac{3}{6} = \ldots	
+S3	4	V2	Hitunglah peluang kejadian berikut saat melempar satu dadu!	1/2	1/3	2/3	1/6	A	1	Aktif	P(\text{genap}) = \dfrac{n(\text{genap})}{n(S)} = \dfrac{3}{6} = \ldots	
+S3	4	V3	Hitunglah peluang kejadian berikut saat melempar dua koin sekaligus!	1/2	1/4	3/4	1	A	1	Aktif	P(\text{1 angka, 1 gambar}) = \dfrac{2}{4} = \ldots	
+S3	4	V4	Hitunglah peluang kejadian berikut saat melempar satu dadu!	1/2	1/3	2/3	1/6	A	1	Aktif	P(x \geq 4) = \dfrac{3}{6} = \ldots	
+S3	4	V5	Hitunglah peluang kejadian berikut saat melempar satu dadu!	1/3	1/2	1/6	2/3	A	1	Aktif	P(\text{kelipatan 3}) = \dfrac{2}{6} = \ldots	
+S3	5	V1	Hitunglah jangkauan (range) dari data berikut!	12	10	8	15	A	1	Aktif	\text{Data: } \{ 3,\; 7,\; 8,\; 12,\; 15 \} \quad R = x_{maks} - x_{min}	
+S3	5	V2	Hitunglah jangkauan (range) dari data berikut!	15	12	11	20	A	1	Aktif	\text{Data: } \{ 5,\; 9,\; 11,\; 14,\; 20 \} \quad R = x_{maks} - x_{min}	
+S3	5	V3	Hitunglah jangkauan (range) dari data berikut!	14	12	10	16	A	1	Aktif	\text{Data: } \{ 2,\; 6,\; 8,\; 10,\; 16 \} \quad R = x_{maks} - x_{min}	
+S3	5	V4	Hitunglah jangkauan (range) dari data berikut!	15	11	12	19	A	1	Aktif	\text{Data: } \{ 4,\; 8,\; 11,\; 15,\; 19 \} \quad R = x_{maks} - x_{min}	
+S3	5	V5	Hitunglah jangkauan (range) dari data berikut!	20	15	12	21	A	1	Aktif	\text{Data: } \{ 1,\; 5,\; 9,\; 13,\; 21 \} \quad R = x_{maks} - x_{min}	
