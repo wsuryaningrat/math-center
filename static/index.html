@@ -1023,9 +1023,7 @@
     // Client-side downsampler for high-res smartphone scans (HEIC/JPG > 700KB)
     // Drops upload time by ~80% without losing OCR/OMR precision
     async function compressImageIfNeeded(file) {
-      // Always send full-resolution image to backend for sub-pixel OMR & ArUco precision
-      return file;
-      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf') || file.size < 700 * 1024) {
+      if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf') || file.name.toLowerCase().endsWith('.heic') || file.size < 700 * 1024) {
         return file;
       }
       return new Promise((resolve) => {
@@ -1105,7 +1103,10 @@ async function handleFiles(files) {
       async function worker() {
         while (fileQueue.length > 0) {
           const file = fileQueue.shift();
-          pSub.innerText = `Memproses: ${file.name}...`;
+          pSub.innerText = `Memproses (${completedCount + 1}/${totalFiles}): ${file.name}...`;
+          const activePct = Math.max(5, Math.round((completedCount / totalFiles) * 100));
+          pBar.style.width = `${activePct}%`;
+          pPct.innerText = `${activePct}%`;
 
           try {
             const readyFile = await compressImageIfNeeded(file);
@@ -1136,7 +1137,7 @@ async function handleFiles(files) {
         }
       }
 
-      const numWorkers = Math.min(2, totalFiles);
+      const numWorkers = Math.min(4, totalFiles);
       const workers = [];
       for (let w = 0; w < numWorkers; w++) {
         workers.push(worker());

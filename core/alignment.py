@@ -320,10 +320,11 @@ def _make_roi_variants(roi):
         roi, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 21, 5
     )
     variants.append(adapt)
-    # 2× upscale: recovers very small markers in high-res images.
+    # 2× upscale: only needed for small/low-res markers.
     h, w = roi.shape[:2]
-    up = cv2.resize(roi, (w * 2, h * 2), interpolation=cv2.INTER_CUBIC)
-    variants.append(up)
+    if min(h, w) < 80:
+        up = cv2.resize(roi, (w * 2, h * 2), interpolation=cv2.INTER_LINEAR)
+        variants.append(up)
     # ponytail: 0.5x downscale + adaptive threshold handles blur/noise on high-res camera captures
     if min(h, w) >= 50:
         half = cv2.resize(roi, (w // 2, h // 2), interpolation=cv2.INTER_AREA)
@@ -1261,14 +1262,24 @@ def detect_corners_and_crop(
                     if q_rgh >= 0.20:
                         green_cands.append((c_rgh, q_rgh, "rough_refined"))
 
+        # Unified single-pass ArUco detection (rot_raw first, fallback rough_raw)
+        ar_boxes, ar_ids, detected_dict, ar_status = None, None, None, "FAILED"
+        inv_M_for_ar = None
+        if best_aruco_reg is None or len(green_cands) > 1:
+            ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
+                rot_raw, dict_name=dict_name, expected_ids=expected_ids
+            )
+            if (ar_boxes is None or ar_status != "DETECTED") and rough_raw is not None:
+                ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
+                    rough_raw, dict_name=dict_name, expected_ids=expected_ids
+                )
+                inv_M_for_ar = inv_rough_M
+
         if green_cands:
             best_c = green_cands[0][0]
             chosen_score = green_cands[0][1]
             if len(green_cands) > 1:
-                ar_b, _, _, _ = find_aruco_markers(rot_raw, dict_name=dict_name, expected_ids=expected_ids)
-                if ar_b is None:
-                    ar_b, _, _, _ = find_aruco_markers(rot_img, dict_name=dict_name, expected_ids=expected_ids)
-                if ar_b is not None:
+                if ar_boxes is not None and ar_status == "DETECTED":
                     ref_aruco = {
                         "TL": np.array([-25.8, -22.8]),
                         "TR": np.array([1724.5, -23.7]),
@@ -1279,8 +1290,12 @@ def detect_corners_and_crop(
                     for cand_c, cand_q, _ in green_cands:
                         _, cand_M = perspective_warp(image_bgr, cand_c, canvas_w, canvas_h)
                         errs = []
-                        for lbl, b_pts in ar_b.items():
+                        for lbl, b_pts in ar_boxes.items():
                             p_orig = b_pts / np.array([sx, sy], dtype=np.float32)
+                            if inv_M_for_ar is not None:
+                                b_unw = _map_points_back(b_pts, inv_M_for_ar)
+                                if b_unw is not None:
+                                    p_orig = b_unw / np.array([sx, sy], dtype=np.float32)
                             if ang:
                                 p_orig = np.array([unrotate_point(p, image_bgr.shape, ang) for p in p_orig], dtype=np.float32)
                             pts_norm = cv2.perspectiveTransform(p_orig.reshape(-1, 1, 2), cand_M).reshape(-1, 2)
@@ -1314,31 +1329,9 @@ def detect_corners_and_crop(
 
         # ===================================================================
         # PARALLEL: ArUco Registration (does NOT affect crop)
-        # Detect ArUco markers and store as registration metadata.
+        # Store ArUco metadata from single unified pass
         # ===================================================================
-        if best_aruco_reg is None:
-            # Try raw rotated image first (preserves crisp black ArUco squares)
-            ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
-                rot_raw,
-                dict_name=dict_name,
-                expected_ids=expected_ids,
-            )
-            inv_M_for_ar = None
-            if ar_boxes is None or ar_status != "DETECTED":
-                # Try preprocessed rotated image
-                ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
-                    rot_img,
-                    dict_name=dict_name,
-                    expected_ids=expected_ids,
-                )
-            if ar_boxes is None or ar_status != "DETECTED":
-                # Fallback to rough-warped raw image (preserves crisp black bits)
-                ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
-                    rough_raw,
-                    dict_name=dict_name,
-                    expected_ids=expected_ids,
-                )
-                inv_M_for_ar = inv_rough_M
+        if best_aruco_reg is None and ar_boxes is not None and ar_status == "DETECTED":
 
             if ar_boxes is not None and ar_status == "DETECTED":
                 orig_boxes = {}
