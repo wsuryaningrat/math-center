@@ -1316,7 +1316,7 @@ def detect_corners_and_crop(
         # PARALLEL: ArUco Registration (does NOT affect crop)
         # Detect ArUco markers and store as registration metadata.
         # ===================================================================
-        if best_aruco_reg is None and (preferred_method == "aruco" or best_crop is None):
+        if best_aruco_reg is None:
             # Try raw rotated image first (preserves crisp black ArUco squares)
             ar_boxes, ar_ids, detected_dict, ar_status = find_aruco_markers(
                 rot_raw,

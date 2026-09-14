@@ -492,11 +492,11 @@ def calculate_fill_ratio(image_gray, cx, cy, radius, shape="square", w=None, h=N
 
     score = max(darkness * 1.5, ink_ratio * 1.25)
 
-    # 3. Neutralize intrinsic printed character weight (W/M only, never penalize B/D in answers)
+    # 3. Neutralize intrinsic printed character weight across all letter/number glyphs
     if option_glyph:
         opt_key = str(option_glyph).strip().upper()
-        if opt_key in ("W", "M"):
-            offset = GLYPH_BASE_OFFSET.get(opt_key, 0.0)
+        if opt_key in GLYPH_BASE_OFFSET:
+            offset = GLYPH_BASE_OFFSET[opt_key]
             score = max(0.0, score - offset)
 
     return float(np.clip(score, 0.0, 1.0))
@@ -530,16 +530,18 @@ def evaluate_question(options_ratios, threshold=0.28, ambiguous_margin=0.08):
         # Dense letter grid (NAMA A-Z) or digits (NPM 0-9)
         baseline = float(np.percentile(other_vals, 80))
         min_contrast = 0.14
-        min_abs_thresh = max(threshold, 0.30)
+        min_abs_thresh = max(threshold, 0.32)
+        if (top_val - second_val) < 0.045:
+            return -1, "BLANK"
+        contrast = top_val - baseline
+        is_marked = (contrast >= min_contrast and top_val >= min_abs_thresh)
     else:
         # Multiple choice & Kuisioner (e.g. 4-5 options: A, B, C, D, E)
         baseline = float(np.median(other_vals))
         min_contrast = 0.12
         min_abs_thresh = max(threshold, 0.28)
-
-    contrast = top_val - baseline
-
-    is_marked = (contrast >= min_contrast and top_val >= min_abs_thresh) or (top_val >= 0.45 and contrast >= 0.09)
+        contrast = top_val - baseline
+        is_marked = (contrast >= min_contrast and top_val >= min_abs_thresh) or (top_val >= 0.45 and contrast >= 0.09)
 
     if not is_marked:
         return -1, "BLANK"
