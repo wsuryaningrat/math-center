@@ -40,7 +40,7 @@ import cv2
 import numpy as np
 from core.detector import calculate_fill_ratio, evaluate_question
 
-def decode_field(gray_img, field_def, thresh=0.28, margin=0.08):
+def decode_field(gray_img, field_def, thresh=0.32, margin=0.08):
     """
     Decodes a field based on its template definition and detected bubbles (circles or squares).
     Accurately handles both pencil shading and pen 'X' cross marks.
@@ -141,7 +141,7 @@ def decode_field(gray_img, field_def, thresh=0.28, margin=0.08):
     return decoded_values
 
 
-def decode_field_detailed(gray_img, field_def, thresh=0.28, margin=0.08):
+def decode_field_detailed(gray_img, field_def, thresh=0.32, margin=0.08):
     """
     Extended decoder returning both decoded field values and per-bubble confidence / fill ratios.
     """

@@ -82,7 +82,7 @@ def process_single_bgr(img_bgr: np.ndarray, page_name: str) -> Dict[str, Any]:
     for fname, fdef in CANONICAL_TEMPLATE.get("fields", {}).items():
         fcopy = dict(fdef)
         fcopy["field_name"] = fname
-        decoded, analysis = decode_field_detailed(gray, fcopy, thresh=0.28, margin=0.08)
+        decoded, analysis = decode_field_detailed(gray, fcopy, thresh=0.32, margin=0.08)
         for k, v in decoded.items():
             fields[k] = v
             if k.startswith("soal_") or k.startswith("Soal-") or k.startswith("Q"):
