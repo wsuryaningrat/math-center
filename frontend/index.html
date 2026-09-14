@@ -791,13 +791,13 @@
               Komparasi AI & Kunci Jawaban
             </button>
             <button class="tab-btn" id="tab-btn-grid" onclick="switchInspectorTab('grid')">
-              Matriks Bulatan (1 - 100)
+              Matriks Bulatan (1 - 75)
             </button>
           </div>
 
           <div id="tab-pane-comp" style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
             <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">
-              Perbandingan langsung antara arsiran mahasiswa, prediksi optical AI, dan kunci jawaban resmi:
+              Daftar Lengkap 75 Soal (Gulir ke bawah untuk melihat nomor 1 - 75 selengkapnya):
             </div>
             <div style="flex: 1; overflow-y: auto; border: 1px solid var(--border-color); border-radius: 8px; background: #fff;">
               <table class="comp-table">
@@ -818,7 +818,7 @@
 
           <div id="tab-pane-grid" style="display: none; flex-direction: column;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Matriks Bulatan (1 - 100)</div>
+              <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text-muted);">Matriks Bulatan (1 - 75)</div>
               <div style="font-size: 10px; display: flex; gap: 8px;">
                 <span style="color: #059669;">● Benar</span>
                 <span style="color: #b91c1c;">● Salah</span>
@@ -1456,8 +1456,9 @@ async function handleFiles(files) {
       const compMap = sub.question_comparison || {};
       const qKeys = Object.keys(compMap);
 
+      const maxQ = (sub.total_soal && sub.total_soal > 0) ? sub.total_soal : 75;
       if (qKeys.length === 0) {
-        for (let q = 1; q <= 100; q++) {
+        for (let q = 1; q <= maxQ; q++) {
           const ansMap = sub.answers || {};
           const aiMap = sub.ai_analysis || {};
           const qKey = `soal_${q}`;
@@ -1507,7 +1508,8 @@ async function handleFiles(files) {
     function renderGrid(sub) {
       const qGrid = document.getElementById('modal-q-grid');
       qGrid.innerHTML = '';
-      for (let q = 1; q <= 100; q++) {
+      const maxQ = (sub.total_soal && sub.total_soal > 0) ? sub.total_soal : 75;
+      for (let q = 1; q <= maxQ; q++) {
         const qKey = `soal_${q}`;
         const qKeyPad = `soal_${String(q).padStart(2, '0')}`;
         const userAns = (sub.answers && (sub.answers[qKey] || sub.answers[qKeyPad])) || '-';

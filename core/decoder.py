@@ -19,13 +19,15 @@ def get_answer_grid_anchor(gray_img):
                 q1_top = found_top
             break
 
-    if abs(q1_top - 1675.0) > 18.0:
+    if abs(q1_top - 1675.0) > 18.0 and abs(q1_top - 1675.0) < 35.0:
         bot_crop = gray_img[2350:min(h_img, 2400), 140:1600]
         _, th_bot = cv2.threshold(bot_crop, 120, 255, cv2.THRESH_BINARY_INV)
         bot_proj = np.sum(th_bot, axis=1) / 255.0
         bot_peaks = [2350 + i for i in range(1, len(bot_proj) - 1) if bot_proj[i] > 250]
         q_bot = float(bot_peaks[-1]) if bot_peaks else 2380.0
-        sy = (q_bot - q1_top) / max(1.0, 2380.0 - 1675.0)
+        raw_sy = (q_bot - q1_top) / max(1.0, 2380.0 - 1675.0)
+        # ponytail: physical paper does not stretch >3%; clamp sy to avoid sampling outside bubbles
+        sy = max(0.97, min(1.03, raw_sy))
     else:
         q1_top = 1675.0
         sy = 1.0
