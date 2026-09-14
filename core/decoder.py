@@ -129,12 +129,12 @@ def decode_field(gray_img, field_def, thresh=0.28, margin=0.08):
             ratios = [get_bubble_ratio(b) for b in bubbles]
             idx, status = evaluate_question(ratios, threshold=thresh, ambiguous_margin=margin)
 
-            if status == "OK" and idx >= 0 and idx < len(bubbles):
+            if status in ("OK", "MULTIPLE") and 0 <= idx < len(bubbles):
                 ans = bubbles[idx].get("option", chr(65 + idx))
             elif status == "BLANK":
                 ans = "BLANK"
             else:
-                ans = status # MULTIPLE
+                ans = status
 
             decoded_values[item_name] = ans
 
@@ -225,7 +225,7 @@ def decode_field_detailed(gray_img, field_def, thresh=0.28, margin=0.08):
             ratios = [get_bubble_ratio(b) for b in bubbles]
             idx, status = evaluate_question(ratios, threshold=thresh, ambiguous_margin=margin)
 
-            if status == "OK" and 0 <= idx < len(bubbles):
+            if status in ("OK", "MULTIPLE") and 0 <= idx < len(bubbles):
                 ans = bubbles[idx].get("option", chr(65 + idx))
                 conf = round(float(ratios[idx]) * 100, 1)
             elif status == "BLANK":

@@ -546,9 +546,9 @@ def evaluate_question(options_ratios, threshold=0.28, ambiguous_margin=0.08):
     if not is_marked:
         return -1, "BLANK"
 
-    # Multiple marked check:
+    # Multiple marked check: requires both marks to be dark (>= 0.36) and within tight margin (< 0.07)
     second_contrast = second_val - baseline
-    if second_val >= min_abs_thresh and (top_val - second_val) < ambiguous_margin and second_contrast >= (min_contrast * 0.85):
-        return -1, "MULTIPLE"
+    if second_val >= max(min_abs_thresh, 0.36) and (top_val - second_val) < 0.07 and second_contrast >= (min_contrast * 0.90):
+        return top_idx, "MULTIPLE"
 
-    return top_idx, "OK"
+    return top_idx, "OK" 
