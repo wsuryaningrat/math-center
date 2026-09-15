@@ -5,7 +5,7 @@ def get_answer_grid_anchor(gray_img):
     if img_id in _ANCHOR_CACHE:
         return _ANCHOR_CACHE[img_id]
     h_img, w_img = gray_img.shape[:2]
-    crop = gray_img[1640:min(h_img, 1840), 150:320]
+    crop = gray_img[1640:min(h_img, 1840), 140:320]
     _, th = cv2.threshold(crop, 120, 255, cv2.THRESH_BINARY_INV)
     v_lines = cv2.morphologyEx(th, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_RECT, (2, 12)))
 
@@ -15,24 +15,24 @@ def get_answer_grid_anchor(gray_img):
         peaks = [x for x in range(1, len(row) - 1) if row[x] > 0 and row[x - 1] == 0]
         if len(peaks) >= 4:
             found_top = float(1640 + i)
-            if abs(found_top - 1675.0) > 18.0:
+            if abs(found_top - 1675.0) > 15.0:
                 q1_top = found_top
             break
 
-    if abs(q1_top - 1675.0) > 18.0 and abs(q1_top - 1675.0) < 35.0:
-        bot_crop = gray_img[2350:min(h_img, 2400), 140:1600]
-        _, th_bot = cv2.threshold(bot_crop, 120, 255, cv2.THRESH_BINARY_INV)
-        bot_proj = np.sum(th_bot, axis=1) / 255.0
-        bot_peaks = [2350 + i for i in range(1, len(bot_proj) - 1) if bot_proj[i] > 250]
-        q_bot = float(bot_peaks[-1]) if bot_peaks else 2380.0
-        raw_sy = (q_bot - q1_top) / max(1.0, 2380.0 - 1675.0)
-        # ponytail: physical paper does not stretch >3%; clamp sy to avoid sampling outside bubbles
-        sy = max(0.97, min(1.03, raw_sy))
+    # Dynamic layout detection: Matematika (q1~1675) vs Literasi Numerik (q1~1780)
+    if abs(found_top - 1675.0) > 15.0:
+        q1_top = found_top
+        q_bot = 2380.0
+        sy = (q_bot - q1_top) / (2380.0 - 1675.0)
+        dy_top = 26.0
+        dx_top = -4.0
     else:
         q1_top = 1675.0
         sy = 1.0
+        dy_top = 0.0
+        dx_top = 0.0
 
-    res = (q1_top, sy)
+    res = (q1_top, sy, dx_top, dy_top)
     _ANCHOR_CACHE[img_id] = res
     return res
 
@@ -58,14 +58,18 @@ def decode_field(gray_img, field_def, thresh=0.32, margin=0.08):
     decoded_values = {}
 
     def get_bubble_ratio(b):
+        cx = b["cx"]
         cy = b["cy"]
+        q1_top, sy, dx_top, dy_top = get_answer_grid_anchor(gray_img)
         if field_name.startswith("Soal-"):
-            q1_top, sy = get_answer_grid_anchor(gray_img)
-            if abs(q1_top - 1675.0) > 18.0:
+            if abs(q1_top - 1675.0) > 15.0:
                 cy = q1_top + (b["cy"] - 1675.0) * sy
+        elif field_name in ("FAKULTAS", "KODE SOAL", "KODE_SOAL", "NPM"):
+            cx += dx_top
+            cy += dy_top
         return calculate_fill_ratio(
             gray_img,
-            b["cx"],
+            cx,
             cy,
             b.get("radius", 12),
             shape=b.get("shape", "square"),
@@ -157,14 +161,18 @@ def decode_field_detailed(gray_img, field_def, thresh=0.32, margin=0.08):
     analysis = {}
 
     def get_bubble_ratio(b):
+        cx = b["cx"]
         cy = b["cy"]
+        q1_top, sy, dx_top, dy_top = get_answer_grid_anchor(gray_img)
         if field_name.startswith("Soal-"):
-            q1_top, sy = get_answer_grid_anchor(gray_img)
-            if abs(q1_top - 1675.0) > 18.0:
+            if abs(q1_top - 1675.0) > 15.0:
                 cy = q1_top + (b["cy"] - 1675.0) * sy
+        elif field_name in ("FAKULTAS", "KODE SOAL", "KODE_SOAL", "NPM"):
+            cx += dx_top
+            cy += dy_top
         return calculate_fill_ratio(
             gray_img,
-            b["cx"],
+            cx,
             cy,
             b.get("radius", 12),
             shape=b.get("shape", "square"),
